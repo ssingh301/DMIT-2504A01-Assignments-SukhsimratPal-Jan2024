@@ -19,8 +19,7 @@ class Demo extends StatelessWidget {
           title: const Text("App1 - UI Layout"),
           backgroundColor: Colors.blue,
         ),
-        body:Container( 
-        child: Row(
+        body:Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             // Column for Container 1 and Container 2
@@ -51,25 +50,41 @@ class Demo extends StatelessWidget {
               ],
             ),
             //Column for Container 3 and Container 4
-           Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10), 
-                child: Container(
-                  color: Colors.yellow,
-                  height: 370, 
-                  width: 100,
-                  child: const Center(child: Text('Container 3')),
+          Column(
+          children: <Widget>[
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 20, top: 20),
+                      child: Container(
+                        height: 100.0,
+                        width: 100.0,
+                        color: Colors.yellow,
+                        child: const Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Text('Container 3'),
+                      ),
+                    ),
+                  ),
                 ),
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: Container(
+                        height: 100.0,
+                        width: 100.0,
+                        color: Colors.blue,
+                        child: const Align(
+                              alignment: Alignment.centerRight,
+                              child: Text('Container 4'),
+                      ),
+                    ),
+                  ),
+                ),
+                ],
               ),
-              Container(
-                color: Colors.blue,
-                height: 370, 
-                width: 100,
-                child: const Center(child: Text('Container 4')),
-              ),
-            ],
-          ),
+        
             //Column for Container 5 and Container 6
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween, 
@@ -92,7 +107,7 @@ class Demo extends StatelessWidget {
                   ),
                 ),
               ),
-
+        
                 Expanded(
                   child: Align(
                     alignment: Alignment.bottomCenter, 
@@ -111,9 +126,8 @@ class Demo extends StatelessWidget {
                 ),
               ],
             ),
-      ],
-    ),
-  ),
+              ],
+            ),
  ),
 );
 }
