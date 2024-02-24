@@ -21,15 +21,23 @@ class MySnackBar {
           const SizedBox(
             width: 10,
           ),
-          Expanded(child: Text(text)), 
+           Flexible(
+            child: Text(
+              text,
+              overflow: TextOverflow.visible,
+            ),
+          ),
+          TextButton(
+              onPressed: () => {print("Hey, you clicked on the Snackbar Action")},
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Colors.transparent)),
+              child: const Text(
+                "Click Me",
+                style: TextStyle(color: Colors.white),
+              )
+              )
         ],
-      ),
-      action: SnackBarAction(
-        label: 'Click',
-        onPressed: () {
-     
-          print('Hey, you clicked on the Snackbar Action');
-        },
       ),
     );
   }

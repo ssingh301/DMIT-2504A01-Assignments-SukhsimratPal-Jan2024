@@ -55,7 +55,7 @@ class MyFirstPageState extends State<MyFirstPage> {
                       msg1 = 'Clicked $timesClicked';
                     });
                   },
-                  child: Text(msg1),
+                  child: Text("Click ${timesClicked == 0 ? '' : msg1}"),
                 ),
               ),
               Visibility(
@@ -64,10 +64,9 @@ class MyFirstPageState extends State<MyFirstPage> {
                   onPressed: () {
                     setState(() {
                       timesClicked = 0;
-                      msg1 = 'Click Me';
                     });
                   },
-                  child: const Text('Reset'),
+                  child: Text('Reset'),
                 ),
               ),
             ],
@@ -83,7 +82,10 @@ class MyFirstPageState extends State<MyFirstPage> {
                     controller: textEditingController,
                     decoration: InputDecoration(
                       hintText: 'Enter your name',
+                      labelText: 'first name',
+                      icon: Icon(Icons.hourglass_top),
                       helperText: 'min 1, max 10',
+                      floatingLabelBehavior: FloatingLabelBehavior.auto,
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.red),
                       ),
@@ -92,10 +94,12 @@ class MyFirstPageState extends State<MyFirstPage> {
                     ),
                     maxLength: 10,
                     validator: (value) {
-                      if (value == null || value.isEmpty || value.length > 10) {
-                        return '';
-                      }
-                      return null;
+                      return value!.isEmpty
+                          ? 'First name must be at least 1 character'
+                          : null;
+                    },
+                    onSaved: (value) {
+                      firstName = value;
                     },
                   ),
                   Row(
